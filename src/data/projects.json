@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Mobile Aplication Billing",
+    "description": "Pembuatan aplikasi mobile untuk salah satu Perusahaan rental Playstation di Jawa Barat",
+    "img": "/images/richboy-billing.png",
+    "link": "https://demo-billing.example.com"
+  },
+  {
+    "id": 2,
+    "title": "Web Developer Ponpes Provinsi Aceh",
+    "description": "Pembuatan sebuah website khusus untuk salah satu pondok pesantren di provinsi Aceh yang dimana digunakan oleh santri dan pengurus.",
+    "img": "/images/ponpes-aceh.png",
+    "link": "https://ponpes-aceh.example.com"
+  }
+]
