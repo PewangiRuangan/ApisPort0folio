@@ -12,6 +12,6 @@ jobs:
     steps:
       - name: Ping Supabase REST API
         run: |
-          curl -i -X GET "${{ secrets.https://dqhypqqkarkssnlqfepz.supabase.co }}/rest/v1/projects?limit=1" \
-          -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
-          -H "Authorization: Bearer ${{ secrets.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxaHlwcXFrYXJrc3NubHFmZXB6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4MjkxNzksImV4cCI6MjA2NjQwNTE3OX0.oPlRnVl0PfEbNnPPfsoPTrr-MPio-IxV3w-VAChtDHA }}"
+          curl -i -X GET "https://dqhypqqkarkssnlqfepz.supabase.co/rest/v1/projects?limit=1" \
+          -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxaHlwcXFrYXJrc3NubHFmZXB6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4MjkxNzksImV4cCI6MjA2NjQwNTE3OX0.oPlRnVl0PfEbNnPPfsoPTrr-MPio-IxV3w-VAChtDHA" \
+          -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxaHlwcXFrYXJrc3NubHFmZXB6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4MjkxNzksImV4cCI6MjA2NjQwNTE3OX0.oPlRnVl0PfEbNnPPfsoPTrr-MPio-IxV3w-VAChtDHA"
