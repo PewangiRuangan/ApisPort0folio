@@ -190,7 +190,9 @@ const Timeline = memo(() => {
 
               {/* Timeline Card */}
               <div 
-                className={`w-full sm:w-[45%] pl-10 sm:pl-0 relative z-10`}
+                className={`w-full sm:w-1/2 relative z-10 ${
+                  isEven ? "pl-12 sm:pl-0 sm:pr-8" : "pl-12 sm:pl-8"
+                }`}
                 data-aos={isEven ? "fade-left" : "fade-right"}
                 data-aos-duration="1000"
               >
