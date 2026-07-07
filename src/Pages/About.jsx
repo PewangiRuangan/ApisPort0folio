@@ -1,5 +1,5 @@
 import React, { useEffect, memo, useMemo } from "react"
-import { FileText, Code, Award, Globe, ArrowUpRight, Sparkles, UserCheck } from "lucide-react"
+import { FileText, Code, Award, Globe, ArrowUpRight, Sparkles, UserCheck, GraduationCap, Briefcase, Calendar } from "lucide-react"
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
@@ -111,6 +111,114 @@ const StatCard = memo(({ icon: Icon, color, value, label, description, animation
     </div>
   </div>
 ));
+
+const Timeline = memo(() => {
+  const timelineData = useMemo(() => [
+    {
+      date: "2024 - Sekarang",
+      title: "IT Staff",
+      institution: "Sahabat Cuan Indonesia",
+      description: "Mengelola infrastruktur IT, memelihara sistem internal, serta mendukung pengembangan aplikasi web untuk operasional bisnis perusahaan.",
+      icon: Briefcase,
+      color: "from-[#6366f1] to-[#a855f7]",
+    },
+    {
+      date: "2023 - Sekarang",
+      title: "Mahasiswa Teknik Informatika",
+      institution: "Universitas Respati Yogyakarta",
+      description: "Mempelajari rekayasa perangkat lunak, sistem basis data, dan pemrograman web. Aktif mengembangkan berbagai proyek aplikasi selama perkuliahan.",
+      icon: GraduationCap,
+      color: "from-[#a855f7] to-[#6366f1]",
+    },
+    {
+      date: "2023 - Sekarang",
+      title: "Sekretaris Umum",
+      institution: "Taman Pelajar Aceh Yogyakarta (TPA-Y)",
+      description: "Mengelola kegiatan administratif organisasi, surat-menyurat, serta berkoordinasi dalam penyelenggaraan acara kebudayaan dan sosial mahasiswa.",
+      icon: UserCheck,
+      color: "from-teal-500 to-emerald-500",
+    },
+    {
+      date: "2023",
+      title: "Web Development Certification",
+      institution: "Codepolitan",
+      description: "Menyelesaikan program pelatihan intensif dalam pengembangan web, memperkuat pemahaman tentang HTML, CSS, JavaScript, dan teknologi modern.",
+      icon: Award,
+      color: "from-amber-500 to-orange-500",
+    }
+  ], []);
+
+  return (
+    <div className="mt-20 w-full relative">
+      <div className="text-center mb-12" data-aos="fade-up" data-aos-duration="1000">
+        <h3 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]">
+          Pendidikan & Pengalaman
+        </h3>
+        <p className="text-gray-400 mt-2 text-sm sm:text-base">
+          Perjalanan akademis, profesional, dan organisasi saya sejauh ini
+        </p>
+      </div>
+
+      {/* Timeline container */}
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Central Line */}
+        <div className="absolute left-4 sm:left-1/2 transform sm:-translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-[#6366f1] via-[#a855f7] to-transparent opacity-30 z-0"></div>
+
+        {timelineData.map((item, index) => {
+          const Icon = item.icon;
+          const isEven = index % 2 === 0;
+          return (
+            <div 
+              key={index} 
+              className={`relative flex flex-col sm:flex-row items-start sm:items-center mb-12 sm:mb-16 last:mb-0 ${
+                isEven ? "sm:flex-row-reverse" : ""
+              }`}
+            >
+              {/* Spacer for desktop alignment */}
+              <div className="w-full sm:w-1/2 hidden sm:block"></div>
+
+              {/* Central Glowing Dot & Icon */}
+              <div 
+                className="absolute left-4 sm:left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full flex items-center justify-center bg-gray-900 border-2 border-white/20 shadow-[0_0_20px_rgba(99,102,241,0.2)] z-10 hover:scale-110 transition-transform duration-300"
+                style={{ borderColor: "rgba(139, 92, 246, 0.4)" }}
+                data-aos="zoom-in"
+                data-aos-duration="800"
+              >
+                <div className={`absolute inset-0.5 rounded-full bg-gradient-to-r ${item.color} opacity-20 blur-sm`}></div>
+                <Icon className="w-5 h-5 text-gray-200" />
+              </div>
+
+              {/* Timeline Card */}
+              <div 
+                className={`w-full sm:w-[45%] pl-10 sm:pl-0 relative z-10`}
+                data-aos={isEven ? "fade-left" : "fade-right"}
+                data-aos-duration="1000"
+              >
+                <div className="bg-gray-900/50 backdrop-blur-lg rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl flex flex-col h-full relative overflow-hidden group">
+                  <div className={`absolute -z-10 inset-0 bg-gradient-to-br ${item.color} opacity-5 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                  
+                  {/* Date Badge */}
+                  <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${item.color} w-fit mb-3 shadow-md`}>
+                    <Calendar className="w-3.5 h-3.5" />
+                    {item.date}
+                  </span>
+
+                  <h4 className="text-xl font-bold text-white mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#6366f1] group-hover:to-[#a855f7] transition-all duration-300">
+                    {item.title}
+                  </h4>
+                  <h5 className="text-sm font-semibold text-gray-300 mb-2">{item.institution}</h5>
+                  <p className="text-xs sm:text-sm text-gray-400 leading-relaxed text-justify">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+});
 
 const AboutPage = () => {
   // Memoized calculations
@@ -273,6 +381,8 @@ const AboutPage = () => {
           </div>
         </a>
       </div>
+
+      <Timeline />
 
       <style jsx>{`
         @keyframes float {

@@ -77,8 +77,8 @@ const SocialLink = memo(({ icon: Icon, link }) => (
 const TYPING_SPEED = 100;
 const ERASING_SPEED = 50;
 const PAUSE_DURATION = 2000;
-const WORDS = ["Network & Telecom Student", "Tech Enthusiast", "Frontend Developer", "Web Developer"];
-const TECH_STACK = ["React", "Javascript", "Node.js", "Tailwind", "Next.js", "Flutter",  "Supabase", "Git", "HTML", "CSS", "Figma"];
+const WORDS = ["Network & Telecom Student", "Tech Enthusiast", "Frontend Developer", "Web Developer", "Laravel Developer"];
+const TECH_STACK = ["React", "Javascript", "Laravel", "PHP", "Node.js", "Tailwind", "Next.js", "Flutter",  "Supabase", "Git", "HTML", "CSS", "Figma"];
 const SOCIAL_LINKS = [
   { icon: Github, link: "https://github.com/PewangiRuangan" },
   { icon: Linkedin, link: "https://www.linkedin.com/in/m-hafizh-jauhari-1b7552232/" },

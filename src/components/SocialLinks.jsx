@@ -3,6 +3,7 @@ import {
   Linkedin,
   Github,
   Instagram,
+  Youtube,
   ExternalLink,
 } from "lucide-react";
 import AOS from "aos";
@@ -37,38 +38,12 @@ const socialLinks = [
     color: "#ffffff",
     gradient: "from-[#333] to-[#24292e]",
   },
-  {
-    name: "WhatsApp",
-    displayName: "WhatsApp",
-    subText: "089501997081",
-    icon: ({ className = "", ...props }) => (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-        {...props}
-      >
-        <path d="M21.67 20.13a1.09 1.09 0 0 1-1.54 0l-2.2-2.2a9 9 0 1 1 1.54-1.54l2.2 2.2a1.09 1.09 0 0 1 0 1.54z"></path>
-        <path d="M16.24 7.76a4 4 0 0 1 0 5.66"></path>
-      </svg>
-    ),
-    url: "https://wa.me/6289501997081",
-    color: "#25D366",
-    gradient: "from-[#25D366] to-[#128C7E]",
-  },
 ];
 
 const SocialLinks = () => {
   const linkedIn = socialLinks.find((link) => link.isPrimary);
   const otherLinks = socialLinks.filter((link) => !link.isPrimary);
-  const [instagram, github, whatsapp] = otherLinks;
+  const [instagram, github] = otherLinks;
 
   useEffect(() => {
     AOS.init({
@@ -162,65 +137,6 @@ const SocialLinks = () => {
                                hover:border-white/20 transition-all duration-500"
               data-aos="fade-up" 
               data-aos-delay={200 + index * 100} 
-            >
-              <div
-                className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500
-                                     bg-gradient-to-r ${link.gradient}`}
-              />
-
-              <div className="relative flex items-center justify-center">
-                <div
-                  className="absolute inset-0 opacity-20 rounded-lg transition-all duration-500
-                                       group-hover:scale-125 group-hover:opacity-30"
-                  style={{ backgroundColor: link.color }}
-                />
-                <div className="relative p-2 rounded-lg">
-                  <link.icon
-                    className="w-5 h-5 transition-all duration-500 group-hover:scale-110"
-                    style={{ color: link.color }}
-                  />
-                </div>
-              </div>
-
-              {/* Text Container */}
-              <div className="flex flex-col min-w-0">
-                <span className="text-sm font-bold text-gray-200 group-hover:text-white transition-colors duration-300">
-                  {link.displayName}
-                </span>
-                <span className="text-xs text-gray-400 truncate group-hover:text-gray-300 transition-colors duration-300">
-                  {link.subText}
-                </span>
-              </div>
-
-              <ExternalLink
-                className="w-4 h-4 text-gray-500 group-hover:text-white ml-auto
-                                       opacity-0 group-hover:opacity-100 transition-all duration-300
-                                       transform group-hover:translate-x-0 -translate-x-2"
-              />
-
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none overflow-hidden">
-                <div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent
-                                       translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"
-                />
-              </div>
-            </a>
-          ))}
-        </div>
-
-        {/* Third Row - WhatsApp */}
-        <div className="grid grid-cols-1 gap-4">
-          {[whatsapp].map((link, index) => (
-            <a
-              key={link.name}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative flex items-center gap-3 p-4 rounded-xl 
-                               bg-white/5 border border-white/10 overflow-hidden
-                               hover:border-white/20 transition-all duration-500"
-              data-aos="fade-up" 
-              data-aos-delay={400 + index * 100}
             >
               <div
                 className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500
