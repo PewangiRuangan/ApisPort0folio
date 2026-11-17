@@ -1,0 +1,1120 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light" />
+<meta name="description" content="Portofolio M. Hafizh Jauhari, S.Kom. — Web Developer (Fullstack) lulusan Sistem Informasi Universitas Respati Yogyakarta." />
+<link rel="icon" href="data:," />
+<title>Portofolio M. Hafizh Jauhari</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet" />
+<script>document.documentElement.classList.add('nav-js');</script>
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-soft:#f4f7fa;
+    --bg-tint-teal:#edf6f6;
+    --bg-tint-warm:#fdf6ea;
+    --ink:#16202e;
+    --ink-2:#3d4a5c;
+    --ink-3:#66738a;
+    --line:#dde2ea;
+    --line-soft:#e8ecf1;
+    --navy:#17365d;
+    --navy-2:#1f4a7d;
+    --teal:#0e7c86;
+    --teal-dark:#0a5f66;
+    --teal-soft:#e2f2f3;
+    --amber:#d9820b;
+    --amber-strong:#b96e04;
+    --amber-soft:#fdf0da;
+    --coral:#d95f43;
+    --coral-soft:#fbe9e3;
+    --green:#2e7d4f;
+    --green-soft:#e5f2e9;
+    --sky:#2f6fb2;
+    --sky-soft:#e6eff8;
+    --violet:#6d3fc0;
+    --violet-dark:#532f96;
+    --violet-soft:#efe9fa;
+    --radius:14px;
+    --max:1120px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *{animation:none !important; transition:none !important}
+  }
+  body{
+    margin:0;
+    font-family:"Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.65;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--navy-2)}
+  img{max-width:100%}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 24px}
+
+  /* ---------- Nav ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid transparent;
+    border-image:linear-gradient(90deg, var(--navy), var(--teal), var(--amber)) 1;
+  }
+  .nav-inner{display:flex; align-items:center; gap:20px; min-height:64px}
+  .brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--ink); flex-shrink:0}
+  .brand-mark{
+    width:38px; height:38px; border-radius:9px;
+    background:linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:13px; letter-spacing:.04em;
+  }
+  .brand-text{line-height:1.2}
+  .brand-text strong{display:block; font-size:14.5px; font-weight:700}
+  .brand-text span{display:block; font-size:12px; color:var(--teal-dark); font-weight:600}
+  nav.links{margin-left:auto; display:flex; align-items:center; gap:2px; flex-wrap:wrap}
+  nav.links a{
+    color:var(--ink-2); text-decoration:none; font-size:14px; font-weight:600;
+    padding:10px 11px; border-radius:8px; min-height:40px; display:inline-flex; align-items:center;
+    position:relative; transition:background .25s ease, color .25s ease;
+  }
+  nav.links a::after{
+    content:""; position:absolute; left:11px; right:11px; bottom:5px; height:2px; border-radius:2px;
+    background:linear-gradient(90deg, var(--teal), var(--amber));
+    transform:scaleX(0); transform-origin:left; transition:transform .3s ease;
+  }
+  nav.links a:hover{background:var(--teal-soft); color:var(--teal-dark)}
+  nav.links a:hover::after{transform:scaleX(1)}
+  nav.links a.active{background:var(--teal-soft); color:var(--teal-dark)}
+  nav.links a.active::after{transform:scaleX(1)}
+  nav.links a.btn-cv-nav::after{display:none}
+  section[id], .hero[id]{scroll-margin-top:84px}
+  .btn-cv-nav{
+    margin-left:10px; background:var(--amber); color:#241703 !important;
+    padding:10px 16px !important;
+  }
+  .btn-cv-nav:hover{background:#c47408 !important; color:#fff !important}
+  /* ---------- Tombol hamburger (hanya tampil di <=860px & JS aktif) ---------- */
+  .nav-toggle{
+    display:none; margin-left:auto; flex-shrink:0;
+    width:44px; height:44px; padding:0;
+    align-items:center; justify-content:center;
+    background:#fff; border:1px solid var(--line); border-radius:10px;
+    color:var(--navy); cursor:pointer;
+    transition:background .25s ease, border-color .25s ease, color .25s ease;
+  }
+  .nav-toggle:hover{background:var(--teal-soft); border-color:var(--teal); color:var(--teal-dark)}
+  .nav-toggle .ic-close{display:none}
+  header.nav.menu-open .nav-toggle .ic-menu{display:none}
+  header.nav.menu-open .nav-toggle .ic-close{display:block}
+  @media (max-width:860px){
+    /* Tanpa JS: tautan tetap tampil menumpuk di bawah brand (fallback) */
+    .nav-inner{flex-wrap:wrap; padding:10px 0 12px; min-height:0}
+    nav.links{margin-left:0; width:100%; flex-wrap:wrap; gap:4px}
+    nav.links a{white-space:nowrap; padding:9px 10px}
+    .btn-cv-nav{margin-left:4px}
+
+    /* Mode hamburger — aktif hanya bila JS menambahkan .nav-js */
+    html.nav-js .nav-inner{flex-wrap:nowrap; padding:0; min-height:64px}
+    html.nav-js .nav-toggle{display:inline-flex}
+    html.nav-js nav.links{
+      position:absolute; top:100%; left:0; right:0;
+      margin-left:0; width:auto;
+      flex-direction:column; align-items:stretch; flex-wrap:nowrap; gap:2px;
+      background:#fff; padding:10px 16px 14px;
+      border-bottom:1px solid var(--line);
+      box-shadow:0 18px 30px rgba(23,54,93,.14);
+      opacity:0; visibility:hidden; transform:translateY(-8px);
+      transition:opacity .28s ease, transform .28s ease, visibility 0s linear .28s;
+    }
+    html.nav-js header.nav.menu-open nav.links{
+      opacity:1; visibility:visible; transform:none;
+      transition:opacity .28s ease, transform .28s ease, visibility 0s;
+    }
+    html.nav-js nav.links a{
+      white-space:normal; padding:13px 12px; min-height:48px;
+      font-size:15px; border-radius:10px;
+    }
+    html.nav-js nav.links a::after{display:none}
+    html.nav-js .btn-cv-nav{margin-left:0; margin-top:6px; justify-content:center}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    border-bottom:1px solid var(--line-soft);
+    background:
+      radial-gradient(560px 300px at 88% -40px, rgba(217,130,11,.18), transparent 65%),
+      radial-gradient(640px 340px at -80px 110%, rgba(14,124,134,.16), transparent 65%),
+      linear-gradient(120deg,#eef7f7 0%, #f7fbff 38%, #fdf6ea 72%, #ffffff 100%);
+    background-size:100% 100%, 100% 100%, 220% 220%;
+    animation:heroShift 16s ease-in-out infinite alternate;
+  }
+  @keyframes heroShift{
+    from{background-position:0 0, 0 0, 0% 40%}
+    to{background-position:0 0, 0 0, 100% 60%}
+  }
+  .hero-grid{
+    display:grid; grid-template-columns: 1fr 300px; gap:56px;
+    padding:72px 0 64px; align-items:center;
+  }
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr; gap:36px; padding:48px 0 44px} }
+  .hero-kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:700; color:var(--teal-dark);
+    background:var(--teal-soft); border:1px solid #bfe0e2;
+    padding:6px 12px; border-radius:999px; margin-bottom:20px;
+  }
+  .hero-kicker i{width:7px; height:7px; border-radius:50%; background:var(--green); display:inline-block}
+  h1{
+    font-family:"Source Serif 4", Georgia, serif;
+    font-size:clamp(36px, 5.2vw, 54px); line-height:1.08; font-weight:700;
+    margin:0 0 10px; letter-spacing:-.01em; color:var(--ink);
+  }
+  .hero-role{
+    font-size:clamp(18px,2.4vw,22px); font-weight:800; margin:0 0 16px; min-height:1.5em;
+    color:var(--teal-dark);
+  }
+  .hero-role .typed{
+    background:linear-gradient(90deg, var(--navy) 0%, var(--teal) 60%, var(--amber-strong) 115%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:var(--teal-dark);
+  }
+  .hero-role .caret{
+    display:inline-block; width:3px; height:1em; margin-left:3px; vertical-align:-.12em;
+    background:var(--amber); border-radius:2px; animation:caretBlink 1s steps(1) infinite;
+  }
+  @keyframes caretBlink{0%,55%{opacity:1} 56%,100%{opacity:0}}
+  .hero-desc{font-size:16.5px; color:var(--ink-2); max-width:56ch; margin:0 0 28px}
+  .hero-actions{display:flex; flex-wrap:wrap; gap:12px}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    min-height:46px; padding:11px 20px; border-radius:10px;
+    font-size:15px; font-weight:700; text-decoration:none;
+    border:1px solid transparent; cursor:pointer;
+  }
+  .btn-primary{background:linear-gradient(135deg, var(--navy) 0%, var(--teal-dark) 130%); color:#fff}
+  .btn-primary:hover{background:linear-gradient(135deg, var(--navy-2) 0%, var(--teal) 130%)}
+  .btn-amber{background:var(--amber); color:#241703}
+  .btn-amber:hover{background:#c47408; color:#fff}
+  .btn-ghost{background:#fff; color:var(--navy); border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--teal); color:var(--teal-dark); background:var(--teal-soft)}
+  .hero-side{display:flex; flex-direction:column; align-items:center; gap:20px}
+  @keyframes floaty{from{transform:translateY(0)} to{transform:translateY(-9px)}}
+  .profile-card{
+    position:relative; width:min(300px, 82vw); border-radius:26px; padding:8px;
+    background:linear-gradient(160deg, var(--navy) 0%, var(--teal) 55%, var(--amber) 130%);
+    box-shadow:0 22px 44px rgba(14,95,102,.30);
+    animation:floaty 5.5s ease-in-out infinite alternate;
+  }
+  .profile-card img{
+    display:block; width:100%; aspect-ratio:4/4.6; object-fit:cover; object-position:26% 22%;
+    border-radius:19px; background:#dfe9ee;
+  }
+  .profile-badge{
+    position:absolute; left:18px; bottom:18px;
+    display:flex; align-items:center; gap:10px;
+    background:rgba(255,255,255,.95); border:1px solid rgba(255,255,255,.7);
+    border-radius:13px; padding:8px 13px 8px 8px;
+    box-shadow:0 10px 24px rgba(16,32,46,.22);
+  }
+  .profile-badge .mono{
+    width:36px; height:36px; border-radius:9px; flex-shrink:0;
+    background:linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:11.5px; letter-spacing:.04em;
+  }
+  .profile-badge b{display:block; font-size:13px; line-height:1.25; color:var(--ink)}
+  .profile-badge span{display:block; font-size:11.5px; line-height:1.3; color:var(--teal-dark); font-weight:700}
+  .monogram{
+    width:220px; height:220px; border-radius:28px;
+    background:linear-gradient(150deg, var(--navy) 0%, var(--teal-dark) 88%);
+    color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    box-shadow:0 18px 40px rgba(14,95,102,.28);
+    position:relative; overflow:hidden;
+  }
+  .monogram .letters{font-family:"Source Serif 4", Georgia, serif; font-size:64px; font-weight:700; letter-spacing:.02em; line-height:1}
+  .monogram .sub{margin-top:10px; font-size:11.5px; letter-spacing:.22em; font-weight:700; color:#ffd9a0; text-transform:uppercase}
+  .hero-loc{font-size:14px; color:var(--ink-3); display:flex; align-items:center; gap:7px}
+  .hero-loc svg{color:var(--coral)}
+  .stats{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:0;
+    border-top:1px solid var(--line-soft);
+  }
+  .stat{padding:26px 8px 30px; text-align:left}
+  .stat + .stat{border-left:1px solid var(--line-soft); padding-left:28px}
+  .stat b{display:block; font-size:32px; font-weight:800; line-height:1.1}
+  .stat:nth-child(1) b{color:var(--navy)}
+  .stat:nth-child(2) b{color:var(--teal)}
+  .stat:nth-child(3) b{color:var(--amber-strong)}
+  .stat span{display:block; font-size:13.5px; color:var(--ink-3); font-weight:600; margin-top:4px}
+  @media (max-width:560px){
+    .stat b{font-size:25px}
+    .stat + .stat{padding-left:16px}
+    .stat span{font-size:12.5px}
+  }
+
+  /* ---------- Sections ---------- */
+  section{padding:72px 0}
+  section.alt{background:var(--bg-soft)}
+  section.tint-teal{background:var(--bg-tint-teal)}
+  section.tint-warm{background:var(--bg-tint-warm)}
+  @media (max-width:640px){ section{padding:52px 0} }
+  .sec-head{margin-bottom:36px; max-width:680px}
+  .sec-label{
+    display:inline-block; font-size:12.5px; font-weight:800; letter-spacing:.12em; text-transform:uppercase;
+    padding:5px 12px; border-radius:999px; margin:0 0 12px;
+    background:var(--teal-soft); color:var(--teal-dark);
+  }
+  .sec-label.amber{background:var(--amber-soft); color:var(--amber-strong)}
+  .sec-label.coral{background:var(--coral-soft); color:#a03e27}
+  .sec-label.navy{background:var(--sky-soft); color:var(--navy)}
+  h2{font-size:clamp(26px,3.4vw,34px); font-weight:800; margin:0 0 10px; letter-spacing:-.01em; line-height:1.2}
+  h2::after{
+    content:""; display:block; width:56px; height:4px; border-radius:2px; margin-top:12px;
+    background:linear-gradient(90deg, var(--teal), var(--amber));
+  }
+  .sec-head p{color:var(--ink-2); margin:0; font-size:16px}
+
+  /* Tentang */
+  .about-grid{display:grid; grid-template-columns:1.35fr 1fr; gap:28px; align-items:start}
+  @media (max-width:860px){ .about-grid{grid-template-columns:1fr} }
+  .about-text p{margin:0 0 16px; color:var(--ink-2); font-size:16.5px}
+  .about-text p strong{color:var(--ink)}
+  .about-side{display:flex; flex-direction:column; gap:20px}
+  .about-photo{margin:0; border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); position:relative}
+  .about-photo img{width:100%; height:210px; object-fit:cover; object-position:26% 18%; display:block}
+  .about-photo figcaption{
+    position:absolute; left:12px; bottom:12px;
+    background:rgba(255,255,255,.94); color:var(--ink); font-size:12.5px; font-weight:700;
+    padding:5px 11px; border-radius:999px; box-shadow:0 6px 16px rgba(16,32,46,.18);
+  }
+  .edu-card{
+    background:#fff; border:1px solid var(--line); border-top:4px solid var(--teal); border-radius:var(--radius);
+    padding:26px; transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .edu-card:hover{transform:translateY(-4px); box-shadow:0 14px 30px rgba(23,54,93,.12)}
+  .edu-card h3{margin:0 0 4px; font-size:17px; font-weight:800}
+  .edu-card .school{color:var(--navy); font-weight:700; font-size:15px; margin:0 0 14px}
+  .edu-meta{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px}
+  .edu-meta div{border-radius:10px; padding:12px 14px}
+  .edu-meta div:first-child{background:var(--teal-soft)}
+  .edu-meta div:last-child{background:var(--amber-soft)}
+  .edu-meta span{display:block; font-size:12px; font-weight:700; color:var(--ink-3); text-transform:uppercase; letter-spacing:.06em}
+  .edu-meta b{font-size:16px; color:var(--ink)}
+  .edu-thesis{font-size:14px; color:var(--ink-2); margin:0; border-top:1px solid var(--line-soft); padding-top:14px}
+  .edu-thesis span{font-weight:700; color:var(--teal-dark); display:block; margin-bottom:4px; font-size:13px; text-transform:uppercase; letter-spacing:.05em}
+
+  /* Proyek */
+  .proj-featured{
+    display:grid; grid-template-columns:1.05fr 1fr; gap:0;
+    background:linear-gradient(140deg, var(--navy) 0%, var(--teal-dark) 135%); color:#fff;
+    border-radius:18px; overflow:hidden; margin-bottom:24px;
+  }
+  @media (max-width:860px){ .proj-featured{grid-template-columns:1fr} }
+  .proj-featured .pf-body{padding:36px; display:flex; flex-direction:column; align-items:flex-start}
+  .badge-featured{
+    display:inline-block; background:var(--amber); color:#241703;
+    font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+    padding:5px 11px; border-radius:999px; margin-bottom:16px;
+  }
+  .proj-featured h3{font-size:24px; margin:0 0 6px; font-weight:800; line-height:1.25}
+  .proj-featured .org{color:#ffd9a0; font-weight:700; font-size:15px; margin:0 0 14px}
+  .proj-featured p.desc{color:#dde7f3; margin:0 0 20px; font-size:15.5px}
+  .pf-cover{min-height:240px; overflow:hidden}
+  .pf-cover img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s ease}
+  .proj-featured{transition:transform .35s ease, box-shadow .35s ease}
+  .proj-featured:hover{transform:translateY(-4px); box-shadow:0 22px 44px rgba(23,54,93,.28)}
+  .proj-featured:hover .pf-cover img{transform:scale(1.04)}
+  @media (max-width:860px){ .pf-cover{min-height:0} .pf-cover img{aspect-ratio:16/9} }
+  .tags{display:flex; flex-wrap:wrap; gap:7px}
+  .tag{
+    font-size:12.5px; font-weight:700; padding:5px 11px; border-radius:999px;
+    background:#eef2f7; color:var(--navy); border:1px solid #d9e2ee;
+  }
+  .proj-featured .tag{background:rgba(255,255,255,.12); color:#eaf1fa; border-color:rgba(255,255,255,.22)}
+  .proj-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px}
+  @media (max-width:760px){ .proj-grid{grid-template-columns:1fr} }
+  .proj-card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden; display:flex; flex-direction:column;
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .proj-card:hover{transform:translateY(-6px); box-shadow:0 18px 36px rgba(23,54,93,.16)}
+  .proj-cover{border-bottom:4px solid var(--teal); overflow:hidden}
+  .proj-card.t-amber .proj-cover{border-bottom-color:var(--amber)}
+  .proj-card.t-coral .proj-cover{border-bottom-color:var(--coral)}
+  .proj-card.t-navy .proj-cover{border-bottom-color:var(--navy)}
+  .proj-card.t-green .proj-cover{border-bottom-color:var(--green)}
+  .proj-card.t-sky .proj-cover{border-bottom-color:var(--sky)}
+  .proj-cover img{width:100%; aspect-ratio:16/8.2; object-fit:cover; display:block; transition:transform .55s ease}
+  .proj-card:hover .proj-cover img{transform:scale(1.06)}
+  .proj-body{padding:22px 24px 24px; display:flex; flex-direction:column; gap:10px; flex:1}
+  .proj-card h3{margin:0; font-size:18px; font-weight:800; line-height:1.3}
+  .proj-card .org{margin:0; font-size:13.5px; font-weight:800; color:var(--teal-dark); letter-spacing:.02em}
+  .proj-card.t-amber .org{color:var(--amber-strong)}
+  .proj-card.t-coral .org{color:#a03e27}
+  .proj-card.t-navy .org{color:var(--navy)}
+  .proj-card.t-green .org{color:var(--green)}
+  .proj-card.t-sky .org{color:var(--sky)}
+  .proj-card p.desc{margin:0; color:var(--ink-2); font-size:15px; flex:1}
+  .proj-card .tags{margin-top:6px}
+  .proj-link{
+    display:inline-flex; align-items:center; gap:6px; font-weight:700; font-size:14.5px;
+    color:var(--teal-dark); text-decoration:none; margin-top:8px; min-height:36px;
+  }
+  .proj-link:hover{text-decoration:underline}
+  .proj-link svg{flex-shrink:0}
+
+  /* Keahlian */
+  .skill-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px}
+  @media (max-width:860px){ .skill-grid{grid-template-columns:1fr} }
+  .skill-card{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:26px; transition:transform .35s ease, box-shadow .35s ease}
+  .skill-card:hover{transform:translateY(-5px); box-shadow:0 16px 32px rgba(23,54,93,.13)}
+  .skill-card.s-teal{border-top:4px solid var(--teal)}
+  .skill-card.s-amber{border-top:4px solid var(--amber)}
+  .skill-card.s-coral{border-top:4px solid var(--coral)}
+  .skill-card.s-violet{border-top:4px solid var(--violet)}
+  .skill-card h3{margin:0 0 16px; font-size:16px; font-weight:800; display:flex; align-items:center; gap:10px}
+  .skill-card h3 .dot{width:9px; height:9px; border-radius:3px; background:var(--teal); flex-shrink:0}
+  .skill-card.s-amber h3 .dot{background:var(--amber)}
+  .skill-card.s-coral h3 .dot{background:var(--coral)}
+  .skill-card.s-violet h3 .dot{background:var(--violet)}
+  .skill-list{display:flex; flex-wrap:wrap; gap:7px}
+  .skill-list span{
+    font-size:13.5px; font-weight:600; color:var(--ink-2);
+    background:var(--bg-soft); border:1px solid var(--line-soft);
+    padding:6px 12px; border-radius:8px;
+  }
+  .skill-card.s-teal .skill-list span{background:var(--teal-soft); border-color:#cfe7e8}
+  .skill-card.s-amber .skill-list span{background:var(--amber-soft); border-color:#f3e0ba}
+  .skill-card.s-coral .skill-list span{background:var(--coral-soft); border-color:#f3d3c8}
+  .skill-card.s-violet .skill-list span{background:var(--violet-soft); border-color:#ddd0f2}
+
+  /* Pengalaman */
+  .timeline{position:relative; margin-left:6px}
+  .timeline::before{
+    content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px;
+    background:linear-gradient(180deg, var(--teal), var(--amber), var(--coral));
+  }
+  .tl-item{position:relative; padding:0 0 34px 40px}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{
+    content:""; position:absolute; left:0; top:7px; width:16px; height:16px; border-radius:50%;
+    background:#fff; border:3px solid var(--teal);
+  }
+  .tl-item:nth-child(2)::before{border-color:var(--amber)}
+  .tl-item:nth-child(3)::before{border-color:var(--coral)}
+  .tl-item h3{margin:0 0 2px; font-size:18px; font-weight:800}
+  .tl-item .org{margin:0; font-weight:700; color:var(--navy); font-size:15px}
+  .tl-item .when{
+    display:inline-block; margin:6px 0 10px; font-size:13px; font-weight:700; color:var(--teal-dark);
+    background:var(--teal-soft); padding:3px 10px; border-radius:999px;
+  }
+  .tl-item p{margin:0; color:var(--ink-2); font-size:15.5px; max-width:68ch}
+  .tl-item .award{
+    margin-top:10px; display:inline-flex; align-items:center; gap:8px;
+    background:var(--amber-soft); border:1px solid #ecd9a8; color:#6d5312;
+    font-size:13.5px; font-weight:700; padding:7px 12px; border-radius:9px;
+  }
+
+  /* Sertifikat */
+  .cert-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px}
+  @media (max-width:760px){ .cert-grid{grid-template-columns:1fr} }
+  .cert{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
+    display:flex; flex-direction:column;
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .cert:hover{transform:translateY(-6px); box-shadow:0 18px 36px rgba(23,54,93,.15)}
+  .cert-img{display:block; width:100%; padding:0; border:0; background:#f8fafc; cursor:zoom-in; position:relative; font-family:inherit; overflow:hidden}
+  .cert-img img{
+    width:100%; aspect-ratio:1.42; object-fit:contain; display:block;
+    background:#f8fafc; padding:10px; transition:transform .55s ease;
+  }
+  .cert:hover .cert-img img{transform:scale(1.04)}
+  .cert-img .zoom-hint{
+    position:absolute; right:10px; bottom:10px;
+    background:rgba(23,54,93,.88); color:#fff; font-size:12px; font-weight:700;
+    padding:4px 10px; border-radius:999px; display:inline-flex; align-items:center; gap:5px;
+  }
+  .cert-body{display:flex; gap:14px; align-items:flex-start; padding:16px 20px 18px; border-top:3px solid var(--teal)}
+  .cert.c-amber .cert-body{border-top-color:var(--amber)}
+  .cert.c-coral .cert-body{border-top-color:var(--coral)}
+  .cert.c-navy .cert-body{border-top-color:var(--navy)}
+  .cert.c-green .cert-body{border-top-color:var(--green)}
+  .cert.c-sky .cert-body{border-top-color:var(--sky)}
+  .cert-num{
+    flex-shrink:0; width:38px; height:38px; border-radius:10px;
+    background:var(--teal-soft); color:var(--teal-dark);
+    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px;
+  }
+  .cert.c-amber .cert-num{background:var(--amber-soft); color:var(--amber-strong)}
+  .cert.c-coral .cert-num{background:var(--coral-soft); color:#a03e27}
+  .cert.c-navy .cert-num{background:var(--sky-soft); color:var(--navy)}
+  .cert.c-green .cert-num{background:var(--green-soft); color:var(--green)}
+  .cert.c-sky .cert-num{background:var(--sky-soft); color:var(--sky)}
+  .cert h3{margin:0 0 2px; font-size:16px; font-weight:800; line-height:1.35}
+  .cert p{margin:0; font-size:14px; color:var(--ink-3); font-weight:600}
+
+  /* Lightbox sertifikat */
+  .lightbox{
+    position:fixed; inset:0; z-index:100; display:none;
+    background:rgba(13,24,38,.92); padding:24px;
+    align-items:center; justify-content:center; flex-direction:column; gap:14px;
+  }
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:min(1100px,100%); max-height:82vh; border-radius:8px; background:#fff; box-shadow:0 24px 60px rgba(0,0,0,.45)}
+  .lightbox p{color:#e6edf5; font-weight:700; font-size:15px; margin:0; text-align:center}
+  .lightbox .lb-close{
+    position:absolute; top:16px; right:16px; width:44px; height:44px; border-radius:50%;
+    border:1px solid rgba(255,255,255,.35); background:rgba(255,255,255,.1); color:#fff;
+    font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+
+  /* Kontak */
+  .contact-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:28px; align-items:start}
+  @media (max-width:860px){ .contact-grid{grid-template-columns:1fr} }
+  .contact-lead p{color:var(--ink-2); font-size:16.5px; margin:0 0 22px; max-width:52ch}
+  .contact-links{display:flex; flex-direction:column; gap:10px}
+  .contact-item{
+    display:flex; align-items:center; gap:14px;
+    background:#fff; border:1px solid var(--line); border-radius:12px;
+    padding:14px 18px; text-decoration:none; color:var(--ink); min-height:60px;
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .contact-item:hover{border-color:var(--teal); transform:translateY(-3px); box-shadow:0 12px 26px rgba(23,54,93,.12)}
+  .contact-item .ic{
+    width:40px; height:40px; border-radius:10px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .contact-item .ic.li{background:var(--sky-soft); color:var(--navy); border:1px solid #cfdfef}
+  .contact-item .ic.gh{background:var(--teal-soft); color:var(--teal-dark); border:1px solid #cfe7e8}
+  .contact-item .ic.ig{background:var(--coral-soft); color:#a03e27; border:1px solid #f3d3c8}
+  .contact-item b{display:block; font-size:15px}
+  .contact-item span{display:block; font-size:13px; color:var(--ink-3); word-break:break-all}
+  .contact-item .arrow{margin-left:auto; color:var(--ink-3); flex-shrink:0}
+  .cv-box{
+    background:linear-gradient(150deg, var(--navy) 0%, var(--teal-dark) 130%); color:#fff; border-radius:18px; padding:32px;
+  }
+  .cv-box h3{margin:0 0 8px; font-size:21px; font-weight:800}
+  .cv-box p{margin:0 0 20px; color:#c9d6e8; font-size:15px}
+  .cv-box .btn{background:var(--amber); color:#241703}
+  .cv-box .btn:hover{background:#c47408; color:#fff}
+  .cv-box .loc{margin:18px 0 0; font-size:14px; color:#a8ecf0; display:flex; align-items:center; gap:7px}
+
+  footer{border-top:1px solid var(--line-soft); padding:28px 0 36px; background:#fff}
+  .foot-inner{display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between}
+  footer p{margin:0; font-size:14px; color:var(--ink-3)}
+  footer .foot-name{font-weight:700; color:var(--ink-2)}
+
+  @keyframes rise{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none}}
+  .hero-grid{animation:rise .6s ease both}
+  @media (prefers-reduced-motion: reduce){ .hero-grid{animation:none} }
+
+  /* ---------- Animasi scroll-reveal ----------
+     Konten terlihat secara bawaan. Kelas .reveal-init hanya ditambahkan
+     oleh JavaScript, jadi bila JS/IntersectionObserver gagal, tidak ada
+     konten yang hilang. */
+  .reveal-init{opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1)}
+  .reveal-init.is-visible{opacity:1; transform:none}
+  .btn{transition:transform .25s ease, background .25s ease, box-shadow .25s ease, border-color .25s ease, color .25s ease}
+  .btn:hover{transform:translateY(-2px)}
+  .btn:active{transform:translateY(0)}
+  @media (prefers-reduced-motion: reduce){
+    .reveal-init{opacity:1 !important; transform:none !important; transition:none !important}
+    .profile-card{animation:none !important}
+    .hero{animation:none !important}
+    .hero-role .caret{animation:none !important}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#beranda" aria-label="Beranda — M. Hafizh Jauhari">
+      <span class="brand-mark">MHJ</span>
+      <span class="brand-text">
+        <strong>M. Hafizh Jauhari, S.Kom.</strong>
+        <span>Web Developer (Fullstack)</span>
+      </span>
+    </a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Buka menu navigasi">
+      <svg class="ic-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      <svg class="ic-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+    </button>
+    <nav class="links" id="navLinks" aria-label="Navigasi utama">
+      <a href="#beranda">Beranda</a>
+      <a href="#tentang">Tentang</a>
+      <a href="#proyek">Proyek</a>
+      <a href="#keahlian">Keahlian</a>
+      <a href="#pengalaman">Pengalaman</a>
+      <a href="#sertifikat">Sertifikat</a>
+      <a href="#kontak">Kontak</a>
+      <a class="btn-cv-nav" href="https://drive.google.com/file/d/1te2Vs7sXfpEK_1huimKHMOgHxeiz81ty/view?usp=drive_link" target="_blank" rel="noopener">Unduh CV</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- BERANDA -->
+  <div class="hero" id="beranda">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="hero-kicker"><i></i> Terbuka untuk peluang kerja</span>
+          <h1>M. Hafizh Jauhari, S.Kom.</h1>
+          <p class="hero-role"><span class="typed" id="typedRole">Web Developer (Fullstack)</span><span class="caret" aria-hidden="true"></span></p>
+          <p class="hero-desc">Lulusan S1 Sistem Informasi Universitas Respati Yogyakarta yang berfokus pada pengembangan aplikasi web dan mobile secara fullstack — berpengalaman membangun sistem untuk instansi pemerintah daerah, perusahaan IT, lembaga pendidikan, dan organisasi.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#proyek">Lihat Proyek</a>
+            <a class="btn btn-amber" href="https://drive.google.com/file/d/1te2Vs7sXfpEK_1huimKHMOgHxeiz81ty/view?usp=drive_link" target="_blank" rel="noopener">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Unduh CV
+            </a>
+            <a class="btn btn-ghost" href="#kontak">Hubungi Saya</a>
+          </div>
+        </div>
+        <div class="hero-side">
+          <div class="profile-card">
+            <img src="assets/profile.jpg" alt="Foto M. Hafizh Jauhari berdiri di samping patung sapi dengan latar langit biru" />
+            <div class="profile-badge" aria-hidden="true">
+              <span class="mono">MHJ</span>
+              <span><b>M. Hafizh Jauhari</b><span>Web Developer</span></span>
+            </div>
+          </div>
+          <p class="hero-loc">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Yogyakarta, Indonesia
+          </p>
+        </div>
+      </div>
+      <div class="stats" role="list" aria-label="Ringkasan pencapaian">
+        <div class="stat" role="listitem"><b data-count="7">7</b><span>Proyek Selesai</span></div>
+        <div class="stat" role="listitem"><b data-count="8" data-suffix="+">8+</b><span>Sertifikat Keahlian</span></div>
+        <div class="stat" role="listitem"><b data-count="2026">2026</b><span>Lulusan S1 Sistem Informasi</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TENTANG -->
+  <section id="tentang">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-label">Tentang Saya</p>
+        <h2>Profil Singkat</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>Saya adalah lulusan <strong>S1 Sistem Informasi Universitas Respati Yogyakarta (2026, IPK 3,41)</strong> yang berfokus pada pengembangan aplikasi web dan mobile secara fullstack.</p>
+          <p>Saya menguasai <strong>PHP (Laravel, CodeIgniter), Java, JavaScript, React, MySQL, PostgreSQL, REST API, dan Git</strong>, dengan pendekatan pengembangan berorientasi objek (OOP) dan konsep MVC.</p>
+          <p>Pengalaman saya meliputi pembangunan sistem untuk <strong>instansi pemerintah daerah, perusahaan IT, lembaga pendidikan, dan organisasi</strong> — mulai dari portal magang dan sistem pemetaan kebutuhan untuk dinas kesehatan, portal berita, aplikasi point of sale, hingga aplikasi billing mobile dan desktop.</p>
+        </div>
+        <div class="about-side">
+        <figure class="about-photo">
+          <img src="assets/profile.jpg" alt="Foto M. Hafizh Jauhari di luar ruangan dengan latar langit biru" loading="lazy" />
+          <figcaption>M. Hafizh Jauhari — Yogyakarta</figcaption>
+        </figure>
+        <aside class="edu-card" aria-label="Pendidikan">
+          <h3>Pendidikan</h3>
+          <p class="school">S1 Sistem Informasi — Universitas Respati Yogyakarta (UNRIYO)</p>
+          <div class="edu-meta">
+            <div><span>Lulus</span><b>31 Juli 2026</b></div>
+            <div><span>IPK</span><b>3,41</b></div>
+          </div>
+          <p class="edu-thesis">
+            <span>Judul Skripsi</span>
+            Rancang Bangun Sistem E-Mapping Penerimaan Mahasiswa Magang di Pelayanan Fasilitas Dinas Kesehatan Kab. Sleman.
+          </p>
+        </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROYEK -->
+  <section id="proyek" class="tint-teal">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-label amber">Portofolio</p>
+        <h2>Proyek</h2>
+        <p>Tujuh proyek yang telah saya kerjakan untuk instansi, perusahaan, lembaga pendidikan, dan organisasi.</p>
+      </div>
+
+      <article class="proj-featured">
+        <div class="pf-body">
+          <span class="badge-featured">Proyek Unggulan</span>
+          <h3>Portal Magang &amp; E-Mapping Faskes</h3>
+          <p class="org">Dinas Kesehatan Kab. Sleman</p>
+          <p class="desc">Sistem pendataan dan pemetaan kebutuhan magang mahasiswa di fasilitas kesehatan se-Kabupaten Sleman.</p>
+          <div class="tags">
+            <span class="tag">PHP</span><span class="tag">Laravel</span><span class="tag">MySQL</span>
+          </div>
+        </div>
+        <div class="pf-cover">
+          <img src="assets/projects/proj-dinkes.jpg" alt="Tangkapan layar halaman depan Portal Magang Mahasiswa Dinas Kesehatan Kabupaten Sleman" loading="lazy" />
+        </div>
+      </article>
+
+      <div class="proj-grid">
+        <article class="proj-card t-amber">
+          <div class="proj-cover"><img src="assets/projects/proj-winnicode.webp" alt="Ilustrasi portal berita olahraga dengan stadion sepak bola dan papan skor" loading="lazy" /></div>
+          <div class="proj-body">
+            <p class="org">PT. Winnicode Garuda Teknologi</p>
+            <h3>Website Portal Berita Winnicode</h3>
+            <p class="desc">Portal berita olahraga dengan jadwal dan skor sepak bola serta panel admin.</p>
+            <div class="tags"><span class="tag">React</span><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span></div>
+            <a class="proj-link" href="https://sportnews.winnicode.com/" target="_blank" rel="noopener">Kunjungi Website
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="proj-card t-teal">
+          <div class="proj-cover"><img src="assets/projects/proj-pos.webp" alt="Ilustrasi meja kasir point of sale dengan mesin kasir dan pemindai barcode" loading="lazy" /></div>
+          <div class="proj-body">
+            <p class="org">PT. Mahirsoft Indonesia</p>
+            <h3>Website POS (Point of Sale)</h3>
+            <p class="desc">Aplikasi kasir: pengelolaan stok dan kategori barang, pendataan sales/customer, laporan keuangan.</p>
+            <div class="tags"><span class="tag">React</span><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span></div>
+          </div>
+        </article>
+
+        <article class="proj-card t-green">
+          <div class="proj-cover"><img src="assets/projects/proj-dayah.jpg" alt="Tangkapan layar halaman utama website Pondok Pesantren Dayah Sidiq" loading="lazy" /></div>
+          <div class="proj-body">
+            <p class="org">Yayasan Pondok Pesantren Dayah Sidiq</p>
+            <h3>Website Pondok Pesantren Dayah Sidiq</h3>
+            <p class="desc">Portal berita, galeri media, informasi akademik santri, dan PMB online.</p>
+            <div class="tags"><span class="tag">WordPress</span><span class="tag">MySQL</span></div>
+            <a class="proj-link" href="https://dayahsidiq.com/" target="_blank" rel="noopener">Kunjungi Website
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="proj-card t-coral">
+          <div class="proj-cover"><img src="assets/projects/proj-fpl.jpg" alt="Tangkapan layar halaman utama website FPL Palem dengan pemandangan Gunung Merapi" loading="lazy" /></div>
+          <div class="proj-body">
+            <p class="org">Forum Peduli Lingkungan Pecinta Alam Lereng Merapi</p>
+            <h3>Website Organisasi FPL Palem</h3>
+            <p class="desc">Portal berita dan edukasi organisasi pecinta alam Lereng Merapi.</p>
+            <div class="tags"><span class="tag">React</span><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span></div>
+            <a class="proj-link" href="https://fplpalem.org/" target="_blank" rel="noopener">Kunjungi Website
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="proj-card t-navy">
+          <div class="proj-cover"><img src="assets/projects/proj-mobile.webp" alt="Ilustrasi ruang rental PlayStation dengan TV, konsol, stik, dan aplikasi billing di ponsel" loading="lazy" /></div>
+          <div class="proj-body">
+            <p class="org">Perusahaan Rental PlayStation — Jawa Barat</p>
+            <h3>Aplikasi Mobile Billing Rental PlayStation</h3>
+            <p class="desc">Aplikasi billing untuk perusahaan rental PlayStation di Jawa Barat.</p>
+            <div class="tags"><span class="tag">Flutter</span><span class="tag">Supabase</span><span class="tag">React</span></div>
+          </div>
+        </article>
+
+        <article class="proj-card t-sky">
+          <div class="proj-cover"><img src="assets/projects/proj-lan.webp" alt="Ilustrasi komputer-komputer dalam jaringan lokal yang terhubung ke server pusat" loading="lazy" /></div>
+          <div class="proj-body">
+            <p class="org">Sistem Jaringan Lokal (LAN)</p>
+            <h3>Aplikasi Desktop Billing LAN</h3>
+            <p class="desc">Sistem pengelolaan dan pemantauan komputer klien dalam jaringan lokal dengan billing time terpusat.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEAHLIAN -->
+  <section id="keahlian">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-label navy">Kompetensi</p>
+        <h2>Keahlian Teknis</h2>
+      </div>
+      <div class="skill-grid">
+        <div class="skill-card s-teal">
+          <h3><span class="dot"></span>Bahasa &amp; Framework</h3>
+          <div class="skill-list">
+            <span>PHP</span><span>Laravel</span><span>CodeIgniter</span><span>JavaScript</span><span>TypeScript</span><span>React</span><span>Next.js</span><span>Node.js</span><span>HTML</span><span>CSS</span><span>Tailwind CSS</span><span>Flutter</span><span>Java</span>
+          </div>
+        </div>
+        <div class="skill-card s-amber">
+          <h3><span class="dot"></span>Database &amp; API</h3>
+          <div class="skill-list">
+            <span>MySQL</span><span>PostgreSQL</span><span>Supabase</span><span>REST API</span>
+          </div>
+        </div>
+        <div class="skill-card s-violet">
+          <h3><span class="dot"></span>AI &amp; Otomasi</h3>
+          <div class="skill-list">
+            <span>Prompt Engineering</span><span>AI-Assisted Development (Claude &amp; Gemini)</span><span>Integrasi AI API (Gemini API)</span><span>Otomasi Workflow Berbasis AI</span>
+          </div>
+        </div>
+        <div class="skill-card s-coral">
+          <h3><span class="dot"></span>Tools &amp; Platform</h3>
+          <div class="skill-list">
+            <span>Git</span><span>GitHub</span><span>Figma</span><span>Vercel</span><span>WordPress</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PENGALAMAN -->
+  <section id="pengalaman" class="tint-warm">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-label coral">Riwayat</p>
+        <h2>Pengalaman</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <h3>Web Developer (Penelitian Skripsi)</h3>
+          <p class="org">Dinas Kesehatan Kabupaten Sleman</p>
+          <span class="when">2026</span>
+          <p>Membangun Portal Magang Mahasiswa dan sistem e-mapping kebutuhan magang fasilitas kesehatan se-Kabupaten Sleman.</p>
+        </div>
+        <div class="tl-item">
+          <h3>Fullstack Web Developer (Magang Mandiri)</h3>
+          <p class="org">PT. Winnicode Garuda Teknologi — Yogyakarta</p>
+          <p>Membangun website portal berita olahraga (sportnews.winnicode.com) dengan panel admin.</p>
+          <span class="award">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg>
+            Predikat kelulusan magang: Sangat Baik Sekali (A)
+          </span>
+        </div>
+        <div class="tl-item">
+          <h3>Sekretaris &amp; Pengelola Web</h3>
+          <p class="org">Yayasan Pondok Pesantren Dayah Sidiq — Aceh</p>
+          <p>Administrasi, koordinasi acara, dokumentasi, dan pembangunan website resmi pesantren (dayahsidiq.com).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERTIFIKAT -->
+  <section id="sertifikat">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-label">Sertifikasi</p>
+        <h2>Sertifikat Keahlian</h2>
+        <p>Delapan sertifikat pelatihan dan sertifikasi yang mendukung kompetensi saya sebagai web developer. Klik gambar sertifikat untuk melihatnya lebih besar.</p>
+      </div>
+      <div class="cert-grid">
+        <div class="cert">
+          <button class="cert-img" type="button" data-full="assets/certs/cert-codepolitan.jpg" data-caption="Fullstack Web Developer — Codepolitan" aria-label="Perbesar sertifikat Fullstack Web Developer dari Codepolitan">
+            <img src="assets/certs/cert-codepolitan.jpg" alt="Sertifikat Fullstack Web Developer dari Codepolitan atas nama M Hafizh Jauhari" loading="lazy" />
+            <span class="zoom-hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Perbesar</span>
+          </button>
+          <div class="cert-body"><span class="cert-num">01</span><div><h3>Fullstack Web Developer</h3><p>Codepolitan</p></div></div>
+        </div>
+        <div class="cert c-sky">
+          <button class="cert-img" type="button" data-full="assets/certs/cert-vsga.jpg" data-caption="Junior Web Developer — VSGA Kominfo" aria-label="Perbesar sertifikat Junior Web Developer dari VSGA Kominfo">
+            <img src="assets/certs/cert-vsga.jpg" alt="Sertifikat pelatihan Junior Web Developer VSGA Kominfo atas nama M. Hafizh Jauhari" loading="lazy" />
+            <span class="zoom-hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Perbesar</span>
+          </button>
+          <div class="cert-body"><span class="cert-num">02</span><div><h3>Junior Web Developer</h3><p>VSGA Kominfo</p></div></div>
+        </div>
+        <div class="cert c-amber">
+          <button class="cert-img" type="button" data-full="assets/certs/cert-dicoding-web.jpg" data-caption="Belajar Dasar Pemrograman Web — Dicoding Indonesia" aria-label="Perbesar sertifikat Belajar Dasar Pemrograman Web dari Dicoding">
+            <img src="assets/certs/cert-dicoding-web.jpg" alt="Sertifikat Belajar Dasar Pemrograman Web dari Dicoding atas nama M. Hafizh Jauhari" loading="lazy" />
+            <span class="zoom-hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Perbesar</span>
+          </button>
+          <div class="cert-body"><span class="cert-num">03</span><div><h3>Belajar Dasar Pemrograman Web</h3><p>Dicoding Indonesia</p></div></div>
+        </div>
+        <div class="cert c-coral">
+          <button class="cert-img" type="button" data-full="assets/certs/cert-dicoding-ai.jpg" data-caption="Belajar Dasar AI — Dicoding Indonesia" aria-label="Perbesar sertifikat Belajar Dasar AI dari Dicoding">
+            <img src="assets/certs/cert-dicoding-ai.jpg" alt="Sertifikat Belajar Dasar AI dari Dicoding atas nama M. Hafizh Jauhari" loading="lazy" />
+            <span class="zoom-hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Perbesar</span>
+          </button>
+          <div class="cert-body"><span class="cert-num">04</span><div><h3>Belajar Dasar AI</h3><p>Dicoding Indonesia</p></div></div>
+        </div>
+        <div class="cert c-green">
+          <button class="cert-img" type="button" data-full="assets/certs/cert-dicoding-fin.jpg" data-caption="Financial Literacy 101 — Dicoding Indonesia" aria-label="Perbesar sertifikat Financial Literacy 101 dari Dicoding">
+            <img src="assets/certs/cert-dicoding-fin.jpg" alt="Sertifikat Financial Literacy 101 dari Dicoding atas nama M. Hafizh Jauhari" loading="lazy" />
+            <span class="zoom-hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Perbesar</span>
+          </button>
+          <div class="cert-body"><span class="cert-num">05</span><div><h3>Financial Literacy 101</h3><p>Dicoding Indonesia</p></div></div>
+        </div>
+        <div class="cert c-navy">
+          <button class="cert-img" type="button" data-full="assets/certs/cert-winnicode.jpg" data-caption="Magang Mandiri Fullstack Web Developer — Winnicode" aria-label="Perbesar sertifikat Magang Mandiri Fullstack Web Developer dari Winnicode">
+            <img src="assets/certs/cert-winnicode.jpg" alt="Sertifikat magang Fullstack Web Developer dari Winnicode atas nama M. Hafizh Jauhari" loading="lazy" />
+            <span class="zoom-hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Perbesar</span>
+          </button>
+          <div class="cert-body"><span class="cert-num">06</span><div><h3>Magang Mandiri Fullstack Web Developer</h3><p>Winnicode</p></div></div>
+        </div>
+        <div class="cert c-amber">
+          <button class="cert-img" type="button" data-full="assets/certs/cert-infradigital-training.jpg" data-caption="Cyber Security Training — InfraDigital Foundation" aria-label="Perbesar sertifikat Cyber Security Training dari InfraDigital Foundation">
+            <img src="assets/certs/cert-infradigital-training.jpg" alt="Sertifikat Cyber Security Training InfraDigital Foundation atas nama M. Hafizh Jauhari" loading="lazy" />
+            <span class="zoom-hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Perbesar</span>
+          </button>
+          <div class="cert-body"><span class="cert-num">07</span><div><h3>Cyber Security Training</h3><p>InfraDigital Foundation</p></div></div>
+        </div>
+        <div class="cert c-coral">
+          <button class="cert-img" type="button" data-full="assets/certs/cert-infradigital-pro.jpg" data-caption="Cybersecurity Professional Development — InfraDigital Foundation" aria-label="Perbesar sertifikat Cybersecurity Professional Development dari InfraDigital Foundation">
+            <img src="assets/certs/cert-infradigital-pro.jpg" alt="Sertifikat Cybersecurity Professional Development InfraDigital Foundation atas nama M. Hafizh Jauhari" loading="lazy" />
+            <span class="zoom-hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Perbesar</span>
+          </button>
+          <div class="cert-body"><span class="cert-num">08</span><div><h3>Cybersecurity Professional Development</h3><p>InfraDigital Foundation</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAK -->
+  <section id="kontak" class="tint-teal">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-label amber">Kontak</p>
+        <h2>Hubungi Saya</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-lead">
+          <p>Saya terbuka untuk peluang kerja dan kerja sama pengembangan aplikasi web maupun mobile. Silakan hubungi saya melalui kanal berikut:</p>
+          <div class="contact-links">
+            <a class="contact-item" href="https://www.linkedin.com/in/m-hafizh-jauhari-1b7552232/" target="_blank" rel="noopener">
+              <span class="ic li">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>
+              </span>
+              <span><b>LinkedIn</b><span>M. Hafizh Jauhari</span></span>
+              <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a class="contact-item" href="https://github.com/PewangiRuangan" target="_blank" rel="noopener">
+              <span class="ic gh">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </span>
+              <span><b>GitHub</b><span>github.com/PewangiRuangan</span></span>
+              <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a class="contact-item" href="https://www.instagram.com/siiapis" target="_blank" rel="noopener">
+              <span class="ic ig">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
+              </span>
+              <span><b>Instagram</b><span>@siiapis</span></span>
+              <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="cv-box">
+          <h3>Curriculum Vitae</h3>
+          <p>Unduh CV lengkap saya dalam format PDF untuk keperluan seleksi administrasi dan arsip perusahaan/instansi Anda.</p>
+          <a class="btn" href="https://drive.google.com/file/d/1te2Vs7sXfpEK_1huimKHMOgHxeiz81ty/view?usp=drive_link" target="_blank" rel="noopener">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Unduh CV (PDF)
+          </a>
+          <p class="loc">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Berdomisili di Yogyakarta, Indonesia
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <p>© 2026 <span class="foot-name">M. Hafizh Jauhari</span> — Web Developer (Fullstack)</p>
+    <p>Yogyakarta, Indonesia</p>
+  </div>
+</footer>
+
+<div class="lightbox" id="certLightbox" role="dialog" aria-modal="true" aria-label="Gambar sertifikat diperbesar">
+  <button class="lb-close" type="button" id="lbClose" aria-label="Tutup">&times;</button>
+  <img id="lbImg" alt="" hidden />
+  <p id="lbCaption"></p>
+</div>
+
+<script>
+  (function(){
+    var lb = document.getElementById('certLightbox');
+    var lbImg = document.getElementById('lbImg');
+    var lbCaption = document.getElementById('lbCaption');
+    var lastFocus = null;
+    function openLb(src, caption){
+      lastFocus = document.activeElement;
+      lbImg.src = src;
+      lbImg.alt = caption;
+      lbImg.hidden = false;
+      lbCaption.textContent = caption;
+      lb.classList.add('open');
+      document.getElementById('lbClose').focus();
+    }
+    function closeLb(){
+      lb.classList.remove('open');
+      lbImg.removeAttribute('src');
+      lbImg.hidden = true;
+      if(lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+    var btns = document.querySelectorAll('.cert-img');
+    for(var i = 0; i < btns.length; i++){
+      btns[i].addEventListener('click', function(){
+        openLb(this.getAttribute('data-full'), this.getAttribute('data-caption'));
+      });
+    }
+    document.getElementById('lbClose').addEventListener('click', closeLb);
+    lb.addEventListener('click', function(e){ if(e.target === lb) closeLb(); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && lb.classList.contains('open')) closeLb(); });
+  })();
+</script>
+
+<script>
+  (function(){
+    /* ---------- Menu hamburger (mobile/tablet) ---------- */
+    var header = document.querySelector('header.nav');
+    var toggle = document.getElementById('navToggle');
+    var panel = document.getElementById('navLinks');
+    if(!header || !toggle || !panel) return;
+    function isOpen(){ return header.classList.contains('menu-open'); }
+    function setOpen(open){
+      header.classList.toggle('menu-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Tutup menu navigasi' : 'Buka menu navigasi');
+    }
+    toggle.addEventListener('click', function(e){
+      e.stopPropagation();
+      setOpen(!isOpen());
+    });
+    panel.addEventListener('click', function(e){
+      var a = e.target;
+      while(a && a !== panel && a.tagName !== 'A') a = a.parentNode;
+      if(a && a.tagName === 'A') setOpen(false);
+    });
+    document.addEventListener('click', function(e){
+      if(isOpen() && !header.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && isOpen()){ setOpen(false); toggle.focus(); }
+    });
+    window.addEventListener('resize', function(){
+      if(window.innerWidth > 860 && isOpen()) setOpen(false);
+    });
+  })();
+</script>
+
+<script>
+  (function(){
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---------- Efek ketik peran di hero ---------- */
+    var typedEl = document.getElementById('typedRole');
+    if(typedEl && !reduceMotion){
+      var roles = ['Web Developer', 'Fullstack Developer'];
+      var ri = 0, ci = roles[0].length, deleting = false;
+      typedEl.textContent = roles[0];
+      function tick(){
+        var word = roles[ri];
+        if(!deleting){
+          ci++;
+          typedEl.textContent = word.slice(0, ci);
+          if(ci >= word.length){ deleting = true; setTimeout(tick, 1900); return; }
+          setTimeout(tick, 75);
+        } else {
+          ci--;
+          typedEl.textContent = word.slice(0, ci);
+          if(ci <= 0){ deleting = false; ri = (ri + 1) % roles.length; setTimeout(tick, 350); return; }
+          setTimeout(tick, 38);
+        }
+      }
+      setTimeout(tick, 1600);
+    }
+
+    /* ---------- Hitung naik statistik hero ---------- */
+    var counters = document.querySelectorAll('[data-count]');
+    function runCounter(el){
+      var target = parseInt(el.getAttribute('data-count'), 10);
+      var suffix = el.getAttribute('data-suffix') || '';
+      if(isNaN(target)) return;
+      if(reduceMotion){ el.textContent = target + suffix; return; }
+      var start = target > 100 ? target - 40 : 0;
+      var dur = 1300, t0 = null;
+      function step(ts){
+        if(!t0) t0 = ts;
+        var p = Math.min((ts - t0) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(start + (target - start) * eased) + suffix;
+        if(p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    if(counters.length){
+      if('IntersectionObserver' in window && !reduceMotion){
+        var cObs = new IntersectionObserver(function(entries){
+          entries.forEach(function(en){
+            if(en.isIntersecting){ runCounter(en.target); cObs.unobserve(en.target); }
+          });
+        }, {threshold: .4});
+        counters.forEach(function(el){ cObs.observe(el); });
+      } else {
+        counters.forEach(runCounter);
+      }
+    }
+
+    /* ---------- Scroll-reveal ----------
+       Elemen terlihat secara bawaan; .reveal-init hanya ditambah di sini,
+       jadi tanpa JS pun semua konten tetap tampil. */
+    var revealSel = '.sec-head, .proj-featured, .proj-card, .skill-card, .tl-item, .cert, .edu-card, .about-photo, .about-text, .contact-item, .cv-box, .stats';
+    var revealEls = document.querySelectorAll(revealSel);
+    if(revealEls.length && 'IntersectionObserver' in window && !reduceMotion){
+      revealEls.forEach(function(el, i){
+        el.classList.add('reveal-init');
+        el.style.transitionDelay = ((i % 3) * 70) + 'ms';
+      });
+      var rObs = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){
+            var el = en.target;
+            el.classList.add('is-visible');
+            rObs.unobserve(el);
+            /* Setelah transisi selesai, kembalikan transisi asli elemen (mis. hover kartu) */
+            setTimeout(function(){ el.classList.remove('reveal-init'); el.style.transitionDelay = ''; }, 850);
+          }
+        });
+      }, {threshold: .1, rootMargin: '0px 0px -6% 0px'});
+      revealEls.forEach(function(el){ rObs.observe(el); });
+      /* Jaring pengaman: elemen yang sudah berada di dalam viewport
+         tapi belum terpicu observer tetap dipaksa tampil */
+      setTimeout(function(){
+        revealEls.forEach(function(el){
+          var r = el.getBoundingClientRect();
+          if(r.top < window.innerHeight && r.bottom > 0) el.classList.add('is-visible');
+        });
+      }, 2500);
+    }
+
+    /* ---------- Indikator menu aktif mengikuti scroll ---------- */
+    var navLinks = document.querySelectorAll('nav.links a[href^="#"]');
+    var sections = [];
+    navLinks.forEach(function(a){
+      var target = document.querySelector(a.getAttribute('href'));
+      if(target) sections.push({link: a, el: target});
+    });
+    function setActive(id){
+      sections.forEach(function(s){
+        s.link.classList.toggle('active', s.el.id === id);
+      });
+    }
+    if(sections.length && 'IntersectionObserver' in window){
+      var sObs = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting) setActive(en.target.id);
+        });
+      }, {rootMargin: '-38% 0px -55% 0px'});
+      sections.forEach(function(s){ sObs.observe(s.el); });
+    }
+  })();
+</script>
+
+</body>
+</html>
