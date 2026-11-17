@@ -472,6 +472,12 @@
   .lightbox.open{display:flex}
   .lightbox img{max-width:min(1100px,100%); max-height:82vh; border-radius:8px; background:#fff; box-shadow:0 24px 60px rgba(0,0,0,.45)}
   .lightbox p{color:#e6edf5; font-weight:700; font-size:15px; margin:0; text-align:center}
+  .lightbox .lb-status{color:#a9bfd8; font-weight:600; font-size:14px}
+  .lightbox .lb-open{
+    color:#ffc95e; font-weight:700; font-size:14px; text-decoration:underline;
+    text-underline-offset:3px;
+  }
+  .lightbox .lb-open:hover{color:#ffd98c}
   .lightbox .lb-close{
     position:absolute; top:16px; right:16px; width:44px; height:44px; border-radius:50%;
     border:1px solid rgba(255,255,255,.35); background:rgba(255,255,255,.1); color:#fff;
@@ -933,7 +939,9 @@
 <div class="lightbox" id="certLightbox" role="dialog" aria-modal="true" aria-label="Gambar sertifikat diperbesar">
   <button class="lb-close" type="button" id="lbClose" aria-label="Tutup">&times;</button>
   <img id="lbImg" alt="" hidden />
+  <p class="lb-status" id="lbStatus" role="status" hidden>Memuat sertifikat…</p>
   <p id="lbCaption"></p>
+  <a class="lb-open" id="lbOpen" href="#" target="_blank" rel="noopener" hidden>Buka gambar sertifikat di tab baru</a>
 </div>
 
 <script>
@@ -941,26 +949,71 @@
     var lb = document.getElementById('certLightbox');
     var lbImg = document.getElementById('lbImg');
     var lbCaption = document.getElementById('lbCaption');
+    var lbStatus = document.getElementById('lbStatus');
+    var lbOpen = document.getElementById('lbOpen');
     var lastFocus = null;
-    function openLb(src, caption){
-      lastFocus = document.activeElement;
+    var loadToken = 0;
+    function showImg(src, caption){
       lbImg.src = src;
       lbImg.alt = caption;
       lbImg.hidden = false;
+      lbStatus.hidden = true;
+      lbOpen.hidden = true;
+    }
+    function showFail(src){
+      lbImg.hidden = true;
+      lbStatus.textContent = 'Gambar sertifikat gagal dimuat.';
+      lbStatus.hidden = false;
+      lbOpen.href = src;
+      lbOpen.hidden = false;
+    }
+    function openLb(btn){
+      lastFocus = document.activeElement;
+      var src = btn.getAttribute('data-full');
+      var caption = btn.getAttribute('data-caption') || '';
+      var thumb = btn.querySelector('img');
+      var token = ++loadToken;
       lbCaption.textContent = caption;
+      lbImg.hidden = true;
+      lbStatus.textContent = 'Memuat sertifikat…';
+      lbStatus.hidden = false;
+      lbOpen.hidden = true;
       lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
       document.getElementById('lbClose').focus();
+      /* Muat gambar dulu di latar: lightbox hanya menampilkan gambar yang
+         benar-benar berhasil dimuat, bukan ikon gambar rusak + teks alt. */
+      var pre = new Image();
+      pre.onload = function(){ if(token === loadToken) showImg(src, caption); };
+      pre.onerror = function(){
+        if(token !== loadToken) return;
+        /* Cadangan: pakai file gambar mini yang sudah tampil di kartu. */
+        var fallback = thumb ? (thumb.currentSrc || thumb.src) : '';
+        if(fallback && fallback !== src){
+          var pre2 = new Image();
+          pre2.onload = function(){ if(token === loadToken) showImg(fallback, caption); };
+          pre2.onerror = function(){ if(token === loadToken) showFail(src); };
+          pre2.src = fallback;
+        } else {
+          showFail(src);
+        }
+      };
+      pre.src = src;
     }
     function closeLb(){
+      loadToken++;
       lb.classList.remove('open');
       lbImg.removeAttribute('src');
       lbImg.hidden = true;
+      lbStatus.hidden = true;
+      lbOpen.hidden = true;
+      document.body.style.overflow = '';
       if(lastFocus && lastFocus.focus) lastFocus.focus();
     }
     var btns = document.querySelectorAll('.cert-img');
     for(var i = 0; i < btns.length; i++){
       btns[i].addEventListener('click', function(){
-        openLb(this.getAttribute('data-full'), this.getAttribute('data-caption'));
+        openLb(this);
       });
     }
     document.getElementById('lbClose').addEventListener('click', closeLb);
